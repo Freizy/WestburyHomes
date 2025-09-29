@@ -144,13 +144,13 @@ const Home = () => {
               <h2 className="text-4xl font-serif font-bold text-[#161616] mb-6">
                 Welcome to WESTBURY HOMES
               </h2>
-              <p className="text-lg text-body mb-6 font-sans">
+              <p className="text-lg text-body text-[#838FBF] mb-6 font-sans">
                 Experience the pinnacle of luxury living with WESTBURY HOMES—a
                 fusion of elegance and modern design. Our meticulously crafted
                 apartments, strategically located for convenience and
                 tranquility, offer a perfect blend of style and functionality.
               </p>
-              <p className="text-lg text-body mb-8 font-sans">
+              <p className="text-lg text-bodytext-[#838FBF] mb-8 font-sans">
                 Discover a range of residences tailored to diverse
                 preferences—whether you desire a serene retreat, a dynamic urban
                 dwelling, or a vibrant community. Join us in redefining the art

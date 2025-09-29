@@ -5,6 +5,13 @@ import About from "./pages/About";
 import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from './pages/Home';
+import Suites from "./pages/Properties";
+import SuiteDetail from "./pages/PropertyDetail";
+import Contact from "./pages/Contact";
+import Booking from "./pages/Booking";
+
+
+
 
 // Layout wrapper
 const AppLayout = ({ children }) => {
@@ -53,10 +60,11 @@ function App() {
       <main className="App" style={{ minHeight: '60vh' }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/suites" element={<h1 className='text-3xl font-bold underline'>Suites Page</h1>} />
+          <Route path="/suites" element={<Suites />} />
+          <Route path="/suites/:id" element={<SuiteDetail />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<h1 className='text-3xl font-bold underline'>Contact Page</h1>} />
-          <Route path="/booking" element={<h1 className='text-3xl font-bold underline'>Booking Page</h1>} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/booking" element={<Booking />} />
         </Routes>
       </main>
       <Footer/>
