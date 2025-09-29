@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import About from "./pages/About";
 import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Home from './pages/Home';
 
 // Layout wrapper
 const AppLayout = ({ children }) => {
@@ -51,7 +52,7 @@ function App() {
       <Navbar/>
       <main className="App" style={{ minHeight: '60vh' }}>
         <Routes>
-          <Route path="/" element={<h1 className='text-3xl font-bold underline'>Home Page</h1>} />
+          <Route path="/" element={<Home />} />
           <Route path="/suites" element={<h1 className='text-3xl font-bold underline'>Suites Page</h1>} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<h1 className='text-3xl font-bold underline'>Contact Page</h1>} />
