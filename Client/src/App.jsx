@@ -9,7 +9,10 @@ import Suites from "./pages/Properties";
 import SuiteDetail from "./pages/PropertyDetail";
 import Contact from "./pages/Contact";
 import Booking from "./pages/Booking";
-
+import AdminLogin from "./pages/AdminLogin";
+import Access from './pages/Access';
+import StaffPortal from './pages/StaffPortal';
+//import AdminDashboard from './pages/AdminDashboard';
 
 
 
@@ -56,6 +59,7 @@ const AppLayout = ({ children }) => {
 function App() {
   return (
     <BrowserRouter>
+    <AppLayout>
       <Navbar/>
       <main className="App" style={{ minHeight: '60vh' }}>
         <Routes>
@@ -65,9 +69,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          {/*<Route path="/admin" element={<AdminDashboard />} />*/}
+          <Route path="/access" element={<Access />} />
+          <Route path="/staff" element={<StaffPortal />} />
+
         </Routes>
       </main>
-      <Footer/>
+      </AppLayout>
     </BrowserRouter>
   )
 }
