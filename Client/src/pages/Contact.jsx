@@ -21,8 +21,8 @@ const Contact = () => {
     {
       icon: <Phone size={24} />,
       title: "Phone",
-      details: "+233 0558469564",
-      link: "tel:+2330558469564",
+      details: "+233 558469564",
+      link: "tel:+233558469564",
     },
     {
       icon: <Mail size={24} />,
