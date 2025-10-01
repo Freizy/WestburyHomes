@@ -126,6 +126,87 @@ const About = () => {
         </div>
       </section>
 
+{/* Features Section */}
+<section className="py-20 bg-white">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-12"
+    >
+      <h2 className="text-4xl font-serif font-bold text-[#161616] mb-4">
+        What Makes Us Special
+      </h2>
+      <p className="text-xl text-gray-600 font-sans">
+        Discover the WESTBURY HOMES difference
+      </p>
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: 'Prime Location',
+          description:
+            'Situated in the prestigious East Legon neighborhood, offering easy access to business districts, shopping centers, and cultural attractions.',
+          icon: '📍',
+        },
+        {
+          title: 'Luxury Design',
+          description:
+            'Each suite features contemporary design with premium finishes, creating an atmosphere of sophisticated elegance.',
+          icon: '✨',
+        },
+        {
+          title: 'World-Class Amenities',
+          description:
+            'From high-speed WiFi to secure parking, every amenity is designed to enhance your stay and provide ultimate comfort.',
+          icon: '🏆',
+        },
+        {
+          title: 'Exceptional Service',
+          description:
+            'Our dedicated team is committed to providing personalized service that exceeds your expectations.',
+          icon: '👥',
+        },
+        {
+          title: 'Safety & Security',
+          description:
+            '24/7 security with CCTV surveillance ensures your peace of mind throughout your stay.',
+          icon: '🔒',
+        },
+        {
+          title: 'Flexible Accommodation',
+          description:
+            'Choose from studio suites to premium penthouses, each designed to meet different needs and preferences.',
+          icon: '🏠',
+        },
+      ].map((feature, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="p-6 bg-[#F2F1ED] rounded-2xl transition-all duration-300 group hover:bg-[#710014]"
+        >
+          <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
+            {feature.icon}
+          </div>
+          <h3 className="text-xl font-serif font-semibold mb-3 text-[#161616] group-hover:text-white">
+            {feature.title}
+          </h3>
+          <p className="text-gray-600 group-hover:text-white/80 font-sans">
+            {feature.description}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
       {/* Values Section */}
       <section className="py-20 bg-[#F2F1ED]">
         <div className="container mx-auto px-4">

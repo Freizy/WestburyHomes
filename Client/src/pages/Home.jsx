@@ -301,9 +301,132 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Amenities */}
-      {/* ✅ Rest of your amenities, location, CTA sections remain unchanged */}
+      {/* Amenities */}      {/* Amenities */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-serif font-bold text-[#161616] mb-4">
+              World-Class Amenities
+            </h2>
+            <p className="text-xl text-[#838FBF] font-sans">
+              Everything you need for the perfect stay
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: Wifi, title: 'High-Speed WiFi', description: 'Complimentary high-speed internet throughout the property' },
+              { icon: Car, title: 'Secure Parking', description: '24/7 secure parking with CCTV surveillance' },
+              { icon: Coffee, title: 'Kitchen Facilities', description: 'Fully equipped kitchens in all suites' },
+              { icon: Users, title: 'Concierge Service', description: '24/7 concierge service for all your needs' }
+            ].map((amenity, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center p-6 rounded-2xl bg-[#F2F1ED] hover:bg-[#710014] hover:text-white transition-all duration-300 group"
+              >
+                <div className="w-16 h-16 bg-[#710014] group-hover:bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  <amenity.icon size={32} className="text-white group-hover:text-[#710014]" />
+                </div>
+                <h3 className="text-xl font-serif font-semibold mb-2 group-hover:text-white">
+                  {amenity.title}
+                </h3>
+                <p className="text-[#838FBF] group-hover:text-white/80 font-sans">
+                  {amenity.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Location */}
+      <section className="py-20 bg-[#F2F1ED]">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-serif font-bold text-[#161616] mb-6">
+                Prime Location
+              </h2>
+              <p className="text-lg text-[#838FBF] mb-6 font-sans">
+                WESTBURY HOMES is strategically located in the heart of Accra's most prestigious neighborhood, 
+                offering easy access to business districts, shopping centers, and cultural attractions.
+              </p>
+              <div className="flex items-center text-[#838FBF] font-sans">
+                <MapPin size={20} className="mr-2 text-[#710014]" />
+                <span>Westbury Homes, Trasacco East Legon</span>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="bg-white p-6 rounded-2xl shadow-lg">
+                <div className="rounded-lg overflow-hidden">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.3837941518095!2d-0.11869361643680673!3d5.657499116619211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf834431c59fbb%3A0x2d857abfad2b3382!2sWestbury%20Homes!5e0!3m2!1sen!2sgh!4v1754597629618!5m2!1sen!2sgh" 
+                    width="100%" 
+                    height="300" 
+                    style={{border:0}} 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Westbury Homes Location"
+                    className="w-full"
+                  ></iframe>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-[#710014] to-[#161616] text-white">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-serif font-bold mb-6">
+              Ready to Experience Luxury?
+            </h2>
+            <p className="text-xl text-[#838FBF] mb-8 font-sans max-w-2xl mx-auto">
+              Book your stay at WESTBURY HOMES and discover the perfect blend of comfort, 
+              luxury, and exceptional service.
+            </p>
+            <Link
+              to="/booking"
+              className="bg-white text-[#710014] hover:bg-[#F2F1ED] px-8 py-4 rounded-lg font-sans font-semibold text-lg transition-all duration-300 inline-flex items-center space-x-2"
+            >
+              <span>Book Your Suite Now</span>
+              <ArrowRight size={20} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </div>
+    
   );
 };
 
