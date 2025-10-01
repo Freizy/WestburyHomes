@@ -13,7 +13,6 @@ const PropertyDetail = () => {
   const navigate = useNavigate();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
-  //eslint-disable-next-line
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const PropertyDetail = () => {
 
     fetchProperty();
   }, [id]);
-//eslint-disable-next-line
   const getAmenityIcon = (amenity) => {
     const iconMap = {
       WiFi: <Wifi size={20} />,
@@ -161,7 +159,199 @@ const PropertyDetail = () => {
           </div>
         </motion.div>
 
-        {/* Rest of your JSX (Gallery, Features, Description, Amenities, Sidebar) stays the same */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Image Gallery */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-2xl shadow-luxury overflow-hidden"
+            >
+              <div className="relative h-96 md:h-[500px]">
+                <img
+                  src={galleryImages[currentImageIndex]}
+                  alt={property.title}
+                  className="w-full h-full object-cover"
+                />
+                {galleryImages.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setCurrentImageIndex(prev => prev === 0 ? galleryImages.length - 1 : prev - 1)}
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full transition-all duration-300"
+                    >
+                      <ArrowLeft size={20} className="text-[#161616]" />
+                    </button>
+                    <button
+                      onClick={() => setCurrentImageIndex(prev => prev === galleryImages.length - 1 ? 0 : prev + 1)}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full transition-all duration-300"
+                    >
+                      <ArrowLeft size={20} className="text-[#161616] rotate-180" />
+                    </button>
+                  </>
+                )}
+              </div>
+              
+              {/* Thumbnail Navigation */}
+              {galleryImages.length > 1 && (
+                <div className="p-4 flex space-x-2 overflow-x-auto">
+                  {galleryImages.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                        index === currentImageIndex ? 'border-[#710014]' : 'border-gray-200'
+                      }`}
+                    >
+                      <img
+                        src={image}
+                        alt={`${property.title} ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+
+            {/* Property Features */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-8 shadow-luxury"
+            >
+              <h2 className="text-2xl font-serif font-bold text-[#161616] mb-6">Property Features</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Bed className="w-6 h-6 mr-3 text-[#710014]" />
+                  <div>
+                    <div className="font-semibold">{property.bedrooms || 0}</div>
+                    <div className="text-sm">Bedrooms</div>
+                  </div>
+                </div>
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Bath className="w-6 h-6 mr-3 text-[#710014]" />
+                  <div>
+                    <div className="font-semibold">{property.bathrooms || 0}</div>
+                    <div className="text-sm">Bathrooms</div>
+                  </div>
+                </div>
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Square className="w-6 h-6 mr-3 text-[#710014]" />
+                  <div>
+                    <div className="font-semibold">{property.area_sqm || property.size || 0}</div>
+                    <div className="text-sm">sqm</div>
+                  </div>
+                </div>
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Users className="w-6 h-6 mr-3 text-[#710014]" />
+                  <div>
+                    <div className="font-semibold">{property.capacity || (property.bedrooms || 1) * 2}</div>
+                    <div className="text-sm">Capacity</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-2xl p-8 shadow-luxury"
+            >
+              <h2 className="text-2xl font-serif font-bold text-[#161616] mb-6">Description</h2>
+              <p className="text-[#838FBF] font-sans leading-relaxed text-lg">
+                {property.description || 'Experience luxury living at its finest with this exceptional property. This stunning apartment offers the perfect blend of comfort, style, and sophistication in one of Accra\'s most prestigious locations.'}
+              </p>
+            </motion.div>
+
+            {/* Amenities */}
+            {property.amenities && property.amenities.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="bg-white rounded-2xl p-8 shadow-luxury"
+              >
+                <h2 className="text-2xl font-serif font-bold text-[#161616] mb-6">Amenities</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {property.amenities.map((amenity, index) => (
+                    <div key={index} className="flex items-center text-[#838FBF] font-sans">
+                      <div className="text-[#710014] mr-3">
+                        {getAmenityIcon(amenity)}
+                      </div>
+                      <span>{amenity}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-8">
+            {/* Contact Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-6 shadow-luxury"
+            >
+                              <h3 className="text-xl font-serif font-bold text-[#161616] mb-4">Contact Us</h3>
+              <div className="space-y-4">
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Phone size={20} className="mr-3 text-[#710014]" />
+                  <a href="tel:+233 558469564" className="hover:text-[#710014] transition-colors">
+                    +233 558469564
+                  </a>
+                </div>
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Mail size={20} className="mr-3 text-[#710014]" />
+                  <a href="mailto:info@westburyhomes.com" className="hover:text-[#710014] transition-colors">
+                    info@westburyhomes.com
+                  </a>
+                </div>
+              </div>
+              <Link
+                to="/booking"
+                className="w-full bg-[#710014] hover:bg-[#161616] text-white px-6 py-3 rounded-lg font-sans font-semibold transition-all duration-300 mt-6 block text-center"
+              >
+                Book Now
+              </Link>
+            </motion.div>
+
+            {/* Property Highlights */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-2xl p-6 shadow-luxury"
+            >
+              <h3 className="text-xl font-serif font-bold text-[#161616] mb-4">Property Highlights</h3>
+              <div className="space-y-3">
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Award size={20} className="mr-3 text-[#710014]" />
+                  <span>Premium Location</span>
+                </div>
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Shield size={20} className="mr-3 text-[#710014]" />
+                  <span>24/7 Security</span>
+                </div>
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Users size={20} className="mr-3 text-[#710014]" />
+                  <span>Concierge Service</span>
+                </div>
+                <div className="flex items-center text-[#838FBF] font-sans">
+                  <Wifi size={20} className="mr-3 text-[#710014]" />
+                  <span>High-Speed Internet</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );
