@@ -1,14 +1,14 @@
 import axios from "axios";
 
 /* ================================
-   BASE URL CONFIG (supports Vite & CRA)
+  BASE URL CONFIG (supports Vite & CRA)
    ================================ */
 const baseURL =
   import.meta?.env?.VITE_API_URL || // Vite
   "http://localhost:5000/api"; // Fallback
 
 /* ================================
-   AXIOS INSTANCE
+  AXIOS INSTANCE
    ================================ */
 const api = axios.create({
   baseURL,
@@ -19,8 +19,8 @@ const api = axios.create({
 });
 
 /* ================================
-   REQUEST INTERCEPTOR
-   Adds token to Authorization header
+  REQUEST INTERCEPTOR
+  Adds token to Authorization header
    ================================ */
 api.interceptors.request.use(
   (config) => {
@@ -34,8 +34,8 @@ api.interceptors.request.use(
 );
 
 /* ================================
-   RESPONSE INTERCEPTOR
-   Handles global API errors
+  RESPONSE INTERCEPTOR
+  Handles global API errors
    ================================ */
 api.interceptors.response.use(
   (response) => response.data,
@@ -54,7 +54,7 @@ api.interceptors.response.use(
 );
 
 /* ================================
-   API ENDPOINTS
+  API ENDPOINTS
    ================================ */
 
 // --- Properties ---
