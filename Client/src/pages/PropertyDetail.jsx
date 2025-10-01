@@ -77,12 +77,11 @@ const PropertyDetail = () => {
 
   if (!property) {
     return (
-      <div className="min-h-screen bg-[#F2F1ED] flex items-center justify-center">
-        <div className="text-center">
+<div className="min-h-screen bg-[#F2F1ED] flex items-start justify-center pt-40">        <div className="text-center">
           <h2 className="text-2xl font-serif font-bold text-[#161616] mb-4">Property Not Found</h2>
           <button
             onClick={() => navigate('/properties')}
-            className=" mt-20 md:mt-30 lg:mt-50 bg-[#710014] hover:bg-[#161616] text-white px-6 py-3 rounded-lg font-sans font-semibold transition-all duration-300"
+            className=" bg-[#710014] hover:bg-[#161616] text-white px-6 py-3 rounded-lg font-sans font-semibold transition-all duration-300"
           >
             Back to Properties
           </button>
