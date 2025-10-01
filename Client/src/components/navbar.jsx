@@ -58,7 +58,7 @@ const Navbar = () => {
                     ? "text-[#710014]"
                     : isScrolled
                     ? "text-[#161616] hover:text-[#710014]"
-                    : "text-white hover:text-[#838FBF]"
+                    : "text-[#6B7280] hover:text-[#838FBF]"
                 }`}
               >
                 {link.name}
